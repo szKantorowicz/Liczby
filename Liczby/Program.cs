@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Liczby
 {
@@ -19,13 +15,20 @@ namespace Liczby
         {
             Program program = new Program();
 
-            program.Calculate();
+            try
+            {
+                program.Calculate();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"Coś poszło nie tak. {exception.Message}");
+            }
+
+            Console.ReadKey();
         }
 
         void Calculate()
         {
-            //Całość możesz również w pętle wrzucić, żeby po podaniu numberu i wyświetleniu znowu można było dalej działać
-            //i powiedzmy ze wprowadzenie Escape bedzie zamykało program
             string number;
             int sum;
             Console.Write("podaj liczbe: ");
@@ -65,8 +68,6 @@ namespace Liczby
                 return;
 
             Console.WriteLine($"suma jest równa {sum}");
-
-            Console.ReadKey();
         }
 
         private static int TryParseNumber(string number)
